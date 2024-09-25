@@ -17,9 +17,9 @@ class MoodEntryForm(ModelForm):
 class RegisterUser(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['username', 'password1', 'password2']
 
     def __init__(self, *args, **kwargs):
         super(RegisterUser, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
+            if not isinstance(field.widget, forms.RadioSelect):
+                field.widget.attrs.update({'class': 'form-control', 'style': 'width: 30rem;'})
