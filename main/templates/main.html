@@ -1,25 +1,42 @@
-{% extends 'base.html' %} {% block content %}
-<h1>Mental Health Tracker</h1>
+{% extends 'base.html' %} 
+{% block content %}
+{% include 'navbar.html' %}
 
-<h5>NPM:</h5>
-<p>{{ npm }}</p>
-<p></p>
 
-<h5>Name:</h5>
-<p>{{ name }}</p>
+<div class="d-flex justify-content-center"> 
+  <div class="d-flex mx-5"> 
+    <h5>NPM:</h5>
+    <p class="mx-2">{{ npm }}</p> 
+  </div>
 
-<h5>Class:</h5>
-<p>{{ class }}</p>
+
+  <div class="d-flex mx-5">
+    <h5>Name:</h5>
+    <p class="mx-2">{{ name }}</p>
+  </div>
+
+  <div class="d-flex mx-5"> 
+    <h5>Class:</h5>
+    <p class="mx-2">{{ class }}</p>
+  </div>
+</div>
+
+
+
+
+
 
 {% if not mood_entries %}
   <p>Belum ada data mood pada mental health tracker.</p>
 {% else %}
-  <table>
+  <table class="table">
     <tr>
-      <th>Mood Name</th>
-      <th>Time</th>
-      <th>Feeling</th>
-      <th>Mood Intensity</th>
+      <th class="bg-primary" >Mood Name</th>
+      <th class="bg-primary" >Time</th>
+      <th class="bg-primary" >Feeling</th>
+      <th class="bg-primary" >Mood Intensity</th>
+      <th class="bg-primary" >Edit</th>
+      <th class="bg-primary" >Delete</th>
     </tr>
 
     {% comment %} 
@@ -31,6 +48,20 @@
         <td>{{mood_entry.time}}</td>
         <td>{{mood_entry.feelings}}</td>
         <td>{{mood_entry.mood_intensity}}</td>
+        <td>
+          <a class="btn" href="{% url 'main:edit_mood' mood_entry.pk %}">
+              <button class="btn btn-warning">
+                  Edit
+              </button>
+          </a>
+        </td>
+        <td>
+          <a href="{% url 'main:delete_mood' mood_entry.pk %}">
+              <button class="btn btn-danger">
+                  Delete
+              </button>
+          </a>
+      </td>
       </tr>
     {% endfor %}
   </table>
@@ -38,11 +69,14 @@
 
 <br />
 
-<a href="{% url 'main:create_mood_entry' %}">
-  <button>Add New Mood Entry</button>
-</a>
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-</a>
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+<div class="d-flex justify-content-around"> 
+  <a href="{% url 'main:create_mood_entry' %}">
+    <button class="btn btn-primary">Add New Mood Entry</button>
+  </a>
+  <a href="{% url 'main:logout' %}">
+    <button class="btn btn-danger">Logout</button>
+  </a>
+</div>
+
+<h5 class="mt-2">Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}

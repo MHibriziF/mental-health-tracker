@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
+{% include 'navbar.html' %}
+
 <h1>Add New Mood Entry</h1>
 
 <form method="POST">
@@ -8,7 +11,7 @@
     <tr>
       <td></td>
       <td>
-        <input type="submit" value="Add Mood Entry" />
+        <input type="submit" value="Add Mood Entry" class="btn btn-primary"/>
       </td>
     </tr>
   </table>
