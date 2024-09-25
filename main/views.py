@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.core import serializers
 from django.shortcuts import render, redirect, reverse
-from main.forms import MoodEntryForm
+from main.forms import MoodEntryForm, RegisterUser
 from main.models import MoodEntry
 
 @login_required(login_url='/login')
@@ -75,10 +75,10 @@ def show_json_by_id(request, id):
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def register(request):
-    form = UserCreationForm()
+    form = RegisterUser()
 
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = RegisterUser(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your account has been successfully created!')
