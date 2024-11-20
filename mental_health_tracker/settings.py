@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9+=7tr%cdfd8mfciuk@a*fhz($xhblkd*o_v8&2ec$$f3a(#l@
 PRODUCTION = os.getenv("PRODUCTION", False)
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "muhammad-hibrizi-mentalhealthtracker.pbp.cs.ui.ac.id"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "muhammad-hibrizi-mentalhealthtracker.pbp.cs.ui.ac.id", '.vercel.app']
 
 # Application definition
 
