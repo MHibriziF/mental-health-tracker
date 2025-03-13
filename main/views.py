@@ -149,3 +149,5 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+    # THIS LOGS OUT USER
